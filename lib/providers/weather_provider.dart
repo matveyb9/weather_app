@@ -10,6 +10,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import '../models/location_model.dart';
 import '../models/settings_model.dart';
+import 'settings_provider.dart';
 import '../models/weather_model.dart';
 import '../services/cache_service.dart';
 import '../services/geocoding_service.dart';

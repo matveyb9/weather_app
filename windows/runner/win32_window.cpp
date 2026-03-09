@@ -183,6 +183,17 @@ LRESULT Win32Window::MessageHandler(HWND hwnd,
       if (child_content_ != nullptr) SetFocus(child_content_);
       return 0;
 
+    case WM_GETMINMAXINFO: {
+      // Enforce minimum window size so Flutter layout never breaks.
+      // 400 x 600 logical pixels × DPI scale.
+      UINT dpi = GetDpiForWindow(hwnd);
+      double scale = dpi / 96.0;
+      auto* mmi = reinterpret_cast<MINMAXINFO*>(lparam);
+      mmi->ptMinTrackSize.x = static_cast<LONG>(400 * scale);
+      mmi->ptMinTrackSize.y = static_cast<LONG>(600 * scale);
+      return 0;
+    }
+
     case WM_DWMCOLORIZATIONCOLORCHANGED:
       UpdateTheme(hwnd);
       return 0;
