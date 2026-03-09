@@ -1,0 +1,359 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/widget_large_root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/widget_background"
+    android:orientation="vertical"
+    android:padding="14dp">
+
+    <!-- SECTION 1: Current weather -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="3"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+
+        <ImageView
+            android:id="@+id/widget_lg_emoji"
+            android:layout_width="52dp"
+            android:layout_height="52dp"
+            android:src="@drawable/ic_weather_sunny"
+            android:scaleType="fitCenter" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginStart="12dp"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:id="@+id/widget_lg_temp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:textColor="#FFFFFFFF"
+                    android:textSize="34sp"
+                    android:textStyle="bold" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/widget_lg_city"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=""
+                        android:textColor="#E0FFFFFF"
+                        android:textSize="13sp"
+                        android:textStyle="bold"
+                        android:maxLines="1"
+                        android:ellipsize="end" />
+
+                    <TextView
+                        android:id="@+id/widget_lg_feels"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=""
+                        android:textColor="#99FFFFFF"
+                        android:textSize="11sp" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/widget_lg_desc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textColor="#CCFFFFFF"
+                android:textSize="12sp"
+                android:maxLines="1"
+                android:ellipsize="end"
+                android:layout_marginTop="2dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="4dp">
+
+                <TextView
+                    android:id="@+id/widget_lg_humidity"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:textColor="#AAFFFFFF"
+                    android:textSize="11sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="  |  "
+                    android:textColor="#44FFFFFF"
+                    android:textSize="11sp" />
+
+                <TextView
+                    android:id="@+id/widget_lg_wind"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:textColor="#AAFFFFFF"
+                    android:textSize="11sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="  |  "
+                    android:textColor="#44FFFFFF"
+                    android:textSize="11sp" />
+
+                <TextView
+                    android:id="@+id/widget_lg_pressure"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:textColor="#AAFFFFFF"
+                    android:textSize="11sp" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- Refresh + timestamp -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top"
+            android:orientation="vertical"
+            android:gravity="center_horizontal">
+
+            <ImageView
+                android:id="@+id/widget_lg_refresh"
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:src="@drawable/ic_refresh"
+                android:alpha="0.55"
+                android:padding="3dp"
+                android:scaleType="fitCenter" />
+
+            <TextView
+                android:id="@+id/widget_lg_updated"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textColor="#55FFFFFF"
+                android:textSize="9sp" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- DIVIDER 1 -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="6dp"
+        android:layout_marginBottom="6dp"
+        android:background="@drawable/widget_divider"
+        android:text="" />
+
+    <!-- SECTION 2: Hourly strip -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+
+        <LinearLayout android:layout_width="0dp" android:layout_height="match_parent"
+            android:layout_weight="1" android:orientation="vertical" android:gravity="center">
+            <TextView android:id="@+id/lg_h1_time" android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:text=""
+                android:textColor="#AAFFFFFF" android:textSize="10sp" />
+            <ImageView android:id="@+id/lg_h1_emoji" android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/ic_weather_sunny"
+                android:scaleType="fitCenter" android:layout_marginTop="2dp" />
+            <TextView android:id="@+id/lg_h1_temp" android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:text=""
+                android:textColor="#FFFFFFFF" android:textSize="12sp"
+                android:textStyle="bold" android:layout_marginTop="2dp" />
+        </LinearLayout>
+
+        <LinearLayout android:layout_width="0dp" android:layout_height="match_parent"
+            android:layout_weight="1" android:orientation="vertical" android:gravity="center">
+            <TextView android:id="@+id/lg_h2_time" android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:text=""
+                android:textColor="#AAFFFFFF" android:textSize="10sp" />
+            <ImageView android:id="@+id/lg_h2_emoji" android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/ic_weather_sunny"
+                android:scaleType="fitCenter" android:layout_marginTop="2dp" />
+            <TextView android:id="@+id/lg_h2_temp" android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:text=""
+                android:textColor="#FFFFFFFF" android:textSize="12sp"
+                android:textStyle="bold" android:layout_marginTop="2dp" />
+        </LinearLayout>
+
+        <LinearLayout android:layout_width="0dp" android:layout_height="match_parent"
+            android:layout_weight="1" android:orientation="vertical" android:gravity="center">
+            <TextView android:id="@+id/lg_h3_time" android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:text=""
+                android:textColor="#AAFFFFFF" android:textSize="10sp" />
+            <ImageView android:id="@+id/lg_h3_emoji" android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/ic_weather_sunny"
+                android:scaleType="fitCenter" android:layout_marginTop="2dp" />
+            <TextView android:id="@+id/lg_h3_temp" android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:text=""
+                android:textColor="#FFFFFFFF" android:textSize="12sp"
+                android:textStyle="bold" android:layout_marginTop="2dp" />
+        </LinearLayout>
+
+        <LinearLayout android:layout_width="0dp" android:layout_height="match_parent"
+            android:layout_weight="1" android:orientation="vertical" android:gravity="center">
+            <TextView android:id="@+id/lg_h4_time" android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:text=""
+                android:textColor="#AAFFFFFF" android:textSize="10sp" />
+            <ImageView android:id="@+id/lg_h4_emoji" android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/ic_weather_sunny"
+                android:scaleType="fitCenter" android:layout_marginTop="2dp" />
+            <TextView android:id="@+id/lg_h4_temp" android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:text=""
+                android:textColor="#FFFFFFFF" android:textSize="12sp"
+                android:textStyle="bold" android:layout_marginTop="2dp" />
+        </LinearLayout>
+
+        <LinearLayout android:layout_width="0dp" android:layout_height="match_parent"
+            android:layout_weight="1" android:orientation="vertical" android:gravity="center">
+            <TextView android:id="@+id/lg_h5_time" android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:text=""
+                android:textColor="#AAFFFFFF" android:textSize="10sp" />
+            <ImageView android:id="@+id/lg_h5_emoji" android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/ic_weather_sunny"
+                android:scaleType="fitCenter" android:layout_marginTop="2dp" />
+            <TextView android:id="@+id/lg_h5_temp" android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:text=""
+                android:textColor="#FFFFFFFF" android:textSize="12sp"
+                android:textStyle="bold" android:layout_marginTop="2dp" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- DIVIDER 2 -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="6dp"
+        android:layout_marginBottom="6dp"
+        android:background="@drawable/widget_divider"
+        android:text="" />
+
+    <!-- SECTION 3: 5-day forecast -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+
+        <LinearLayout android:layout_width="0dp" android:layout_height="match_parent"
+            android:layout_weight="1" android:orientation="vertical" android:gravity="center">
+            <TextView android:id="@+id/lg_d1_day" android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:text=""
+                android:textColor="#AAFFFFFF" android:textSize="10sp" android:textStyle="bold" />
+            <ImageView android:id="@+id/lg_d1_emoji" android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/ic_weather_sunny"
+                android:scaleType="fitCenter" android:layout_marginTop="2dp" />
+            <TextView android:id="@+id/lg_d1_max" android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:text=""
+                android:textColor="#FFFFFFFF" android:textSize="12sp"
+                android:textStyle="bold" android:layout_marginTop="2dp" />
+            <TextView android:id="@+id/lg_d1_min" android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:text=""
+                android:textColor="#88FFFFFF" android:textSize="10sp" />
+        </LinearLayout>
+
+        <LinearLayout android:layout_width="0dp" android:layout_height="match_parent"
+            android:layout_weight="1" android:orientation="vertical" android:gravity="center">
+            <TextView android:id="@+id/lg_d2_day" android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:text=""
+                android:textColor="#AAFFFFFF" android:textSize="10sp" android:textStyle="bold" />
+            <ImageView android:id="@+id/lg_d2_emoji" android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/ic_weather_sunny"
+                android:scaleType="fitCenter" android:layout_marginTop="2dp" />
+            <TextView android:id="@+id/lg_d2_max" android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:text=""
+                android:textColor="#FFFFFFFF" android:textSize="12sp"
+                android:textStyle="bold" android:layout_marginTop="2dp" />
+            <TextView android:id="@+id/lg_d2_min" android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:text=""
+                android:textColor="#88FFFFFF" android:textSize="10sp" />
+        </LinearLayout>
+
+        <LinearLayout android:layout_width="0dp" android:layout_height="match_parent"
+            android:layout_weight="1" android:orientation="vertical" android:gravity="center">
+            <TextView android:id="@+id/lg_d3_day" android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:text=""
+                android:textColor="#AAFFFFFF" android:textSize="10sp" android:textStyle="bold" />
+            <ImageView android:id="@+id/lg_d3_emoji" android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/ic_weather_sunny"
+                android:scaleType="fitCenter" android:layout_marginTop="2dp" />
+            <TextView android:id="@+id/lg_d3_max" android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:text=""
+                android:textColor="#FFFFFFFF" android:textSize="12sp"
+                android:textStyle="bold" android:layout_marginTop="2dp" />
+            <TextView android:id="@+id/lg_d3_min" android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:text=""
+                android:textColor="#88FFFFFF" android:textSize="10sp" />
+        </LinearLayout>
+
+        <LinearLayout android:layout_width="0dp" android:layout_height="match_parent"
+            android:layout_weight="1" android:orientation="vertical" android:gravity="center">
+            <TextView android:id="@+id/lg_d4_day" android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:text=""
+                android:textColor="#AAFFFFFF" android:textSize="10sp" android:textStyle="bold" />
+            <ImageView android:id="@+id/lg_d4_emoji" android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/ic_weather_sunny"
+                android:scaleType="fitCenter" android:layout_marginTop="2dp" />
+            <TextView android:id="@+id/lg_d4_max" android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:text=""
+                android:textColor="#FFFFFFFF" android:textSize="12sp"
+                android:textStyle="bold" android:layout_marginTop="2dp" />
+            <TextView android:id="@+id/lg_d4_min" android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:text=""
+                android:textColor="#88FFFFFF" android:textSize="10sp" />
+        </LinearLayout>
+
+        <LinearLayout android:layout_width="0dp" android:layout_height="match_parent"
+            android:layout_weight="1" android:orientation="vertical" android:gravity="center">
+            <TextView android:id="@+id/lg_d5_day" android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:text=""
+                android:textColor="#AAFFFFFF" android:textSize="10sp" android:textStyle="bold" />
+            <ImageView android:id="@+id/lg_d5_emoji" android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/ic_weather_sunny"
+                android:scaleType="fitCenter" android:layout_marginTop="2dp" />
+            <TextView android:id="@+id/lg_d5_max" android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:text=""
+                android:textColor="#FFFFFFFF" android:textSize="12sp"
+                android:textStyle="bold" android:layout_marginTop="2dp" />
+            <TextView android:id="@+id/lg_d5_min" android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:text=""
+                android:textColor="#88FFFFFF" android:textSize="10sp" />
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

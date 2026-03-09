@@ -1,0 +1,48 @@
+name: weather_app
+description: A beautiful cross-platform weather application powered by Open-Meteo API.
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.4.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  # HTTP requests
+  http: ^1.2.2
+
+  # Local storage for saving last selected region
+  shared_preferences: ^2.3.2
+
+  # State management
+  provider: ^6.1.2
+
+  # Date/time formatting with Russian locale
+  intl: ^0.19.0
+
+  # Smooth animations
+  flutter_animate: ^4.5.0
+
+  # Home screen widgets (Android + iOS)
+  home_widget: ^0.7.0
+
+  # Background widget refresh — Android (WorkManager) + iOS (BGTaskScheduler)
+  # Not available on Web / Windows / macOS / Linux
+  workmanager: ^0.5.0
+
+  # Device geolocation — Android, iOS, Web, Windows, macOS
+  # Linux is NOT supported by the package
+  geolocator: ^13.0.0
+
+  # Network connectivity detection — all platforms
+  connectivity_plus: ^6.0.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^4.0.0
+
+flutter:
+  uses-material-design: true

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Погода</string>
+    <string name="widget_small_name">Погода — Мини</string>
+    <string name="widget_small_desc">Текущая температура и условия в выбранном городе</string>
+    <string name="widget_medium_name">Погода — Почасовой</string>
+    <string name="widget_medium_desc">Температура и почасовой прогноз на 5 часов вперёд</string>
+    <string name="widget_large_name">Погода — Расширенный</string>
+    <string name="widget_large_desc">Текущая погода, почасовой и 5-дневный прогноз</string>
+    <string name="widget_loading">Загрузка…</string>
+    <string name="widget_tap_to_open">Нажмите, чтобы открыть</string>
+</resources>

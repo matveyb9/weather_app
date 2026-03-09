@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=Погода
+Comment=Прогноз погоды
+Exec=weather_app
+Icon=weather_app
+Type=Application
+Categories=Utility;
