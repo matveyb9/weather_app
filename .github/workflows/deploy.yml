@@ -1,0 +1,65 @@
+name: Build & Deploy PWA
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Запрещает параллельные деплои — новый ждёт завершения предыдущего
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build-and-deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1. Получить код
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      # 2. Установить Flutter (официальный способ от команды Flutter)
+      - name: Setup Flutter
+        run: |
+          git clone https://github.com/flutter/flutter.git \
+            --branch stable --depth 1 $HOME/flutter
+          echo "$HOME/flutter/bin" >> $GITHUB_PATH
+
+      # 3. Зависимости
+      - name: Flutter pub get
+        run: flutter pub get
+
+      # 4. Генерация локализаций
+      # - name: Generate localizations
+      #  run: flutter gen-l10n
+
+      # 5. Сборка PWA
+      - name: Build Web
+        run: |
+          flutter build web --release \
+            --base-href "/weather_app/"
+
+      # 6. Настройка GitHub Pages
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      # 7. Загрузить артефакт (build/web → GitHub Pages API)
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: build/web
+
+      # 8. Задеплоить — без создания ветки
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

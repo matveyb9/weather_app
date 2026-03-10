@@ -184,10 +184,10 @@ ios/
 
 Приложение автоматически собирается и деплоится в GitHub Pages при каждом push в `main`.
 
-🌐 **[Открыть PWA](https://ВАШ_НИК.github.io/weather_app/)**
+🌐 **[Открыть PWA](https://matveyb9.github.io/weather_app/)**
 
 ---
 
 ## Лицензия
 
-MIT © 2024
+MIT © 2026
