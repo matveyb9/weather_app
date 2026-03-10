@@ -1,50 +1,167 @@
+# =============================================================================
 # Flutter / Dart
+# =============================================================================
+
+# Инструменты и кэш Dart
 .dart_tool/
-.flutter-plugins
-.flutter-plugins-dependencies
 .packages
 .pub-cache/
 .pub/
+
+# Автогенерируемые файлы Flutter (пересоздаются при flutter pub get)
+.flutter-plugins
+.flutter-plugins-dependencies
+
+# Артефакты сборки
 build/
 
+# Логи сборки
+*.log
+flutter_*.log
+
+# =============================================================================
 # Android
+# =============================================================================
+
+# Gradle
 android/.gradle/
-android/local.properties
+android/build/
 android/captures/
+
+# Локальная конфигурация (пути к SDK, специфичные для машины)
+android/local.properties
+
+# Gradle wrapper (бинарник) — перегенерируется, не нужен в git
 android/gradlew
 android/gradlew.bat
 android/gradle/wrapper/gradle-wrapper.jar
+
+# Подпись — никогда не коммитить ключи!
 android/key.properties
 android/**/*.keystore
 android/**/*.jks
 
-# iOS / macOS
+# =============================================================================
+# iOS
+# =============================================================================
+
+# CocoaPods
 ios/.symlinks/
 ios/Pods/
 ios/Podfile.lock
+
+# Автогенерируемые конфиги Flutter
 ios/Flutter/Generated.xcconfig
 ios/Flutter/flutter_export_environment.sh
+
+# Xcode workspace (генерируется CocoaPods)
 ios/Runner.xcworkspace/
-ios/Runner/GeneratedPluginRegistrant.*
+
+# Автогенерируемый регистратор плагинов
+ios/Runner/GeneratedPluginRegistrant.h
+ios/Runner/GeneratedPluginRegistrant.m
+
+# Xcode временные файлы
+ios/*.mode1v3
+ios/*.mode2v3
+ios/*.perspectivev3
+ios/*.xcuserstate
+ios/xcuserdata/
+
+# =============================================================================
+# macOS
+# =============================================================================
+
 macos/.symlinks/
 macos/Pods/
 macos/Podfile.lock
 macos/Flutter/ephemeral/
 macos/Runner.xcworkspace/
-macos/Runner/GeneratedPluginRegistrant.*
+macos/Runner/GeneratedPluginRegistrant.swift
+macos/xcuserdata/
 
+# =============================================================================
 # Windows
+# =============================================================================
+
+# Ephemeral-директория (генерируется Flutter при сборке)
 windows/flutter/ephemeral/
 
+# =============================================================================
 # Linux
+# =============================================================================
+
 linux/flutter/ephemeral/
 
-# Web (generated)
+# =============================================================================
+# Web (генерируемые файлы сборки)
+# =============================================================================
+
 web/flutter_service_worker.js
 
-# IDE
-.idea/
+# =============================================================================
+# IDE и редакторы
+# =============================================================================
+
+# VS Code
 .vscode/
+*.code-workspace
+
+# IntelliJ / Android Studio
+.idea/
 *.iml
 *.ipr
 *.iws
+.gradle/
+
+# Xcode
+*.pbxuser
+*.mode1v3
+*.mode2v3
+*.perspectivev3
+*.xcuserstate
+xcuserdata/
+DerivedData/
+
+# =============================================================================
+# Операционные системы
+# =============================================================================
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+.Spotlight-V100
+.Trashes
+
+# Windows
+Thumbs.db
+Thumbs.db:encdata
+Desktop.ini
+$RECYCLE.BIN/
+*.lnk
+
+# Linux
+*~
+.directory
+
+# =============================================================================
+# Разное
+# =============================================================================
+
+# Временные файлы
+*.tmp
+*.temp
+*.swp
+*.swo
+
+# Переменные окружения (могут содержать секреты)
+.env
+.env.local
+.env.*.local
+
+# Архивы (не должны попадать в репозиторий)
+*.zip
+*.tar.gz
+*.rar
