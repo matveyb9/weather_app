@@ -89,13 +89,13 @@ BEGIN
     BEGIN
         BLOCK "040904e4"
         BEGIN
-            VALUE "CompanyName", "ru.matveyb9.test" "\0"
-            VALUE "FileDescription", "weather_app" "\0"
+            VALUE "CompanyName", "Weather App\0"
+            VALUE "FileDescription", "Погода — прогноз погоды\0"
             VALUE "FileVersion", VERSION_AS_STRING "\0"
             VALUE "InternalName", "weather_app" "\0"
             VALUE "LegalCopyright", "Copyright (C) 2026 ru.matveyb9.test. All rights reserved." "\0"
             VALUE "OriginalFilename", "weather_app.exe" "\0"
-            VALUE "ProductName", "weather_app" "\0"
+            VALUE "ProductName", "Погода\0"
             VALUE "ProductVersion", VERSION_AS_STRING "\0"
         END
     END
