@@ -47,7 +47,6 @@ jobs:
       - name: Build Web
         run: |
           flutter build web --release \
-            --web-renderer auto \
             --base-href "/weather_app/"
 
       # 6. Настройка GitHub Pages
