@@ -4,7 +4,6 @@ import 'dart:io' show Platform;
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_animate/flutter_animate.dart';
 import 'package:provider/provider.dart';
 
 import '../providers/weather_provider.dart';
@@ -235,9 +234,7 @@ class _LocationSearchSheetState extends State<LocationSearchSheet> {
                             Navigator.pop(context);
                           },
                         )
-                            .animate(delay: (index * 40).ms)
-                            .fadeIn(duration: 300.ms)
-                            .slideX(begin: 0.05, curve: Curves.easeOut);
+;
                       },
                     );
                   },

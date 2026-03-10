@@ -11,6 +11,7 @@ import 'package:provider/provider.dart';
 import 'providers/settings_provider.dart';
 import 'providers/weather_provider.dart';
 import 'screens/home_screen.dart';
+import 'screens/welcome_screen.dart';
 import 'services/background_service.dart';
 
 void main() async {
@@ -136,7 +137,31 @@ class _WeatherAppState extends State<WeatherApp> with WidgetsBindingObserver {
         fontFamily: 'Roboto',
       ),
       themeMode: themeMode,
-      home: const HomeScreen(),
+      home: const _StartScreen(),
+    );
+  }
+}
+
+/// Выбирает стартовый экран: onboarding или сразу HomeScreen.
+class _StartScreen extends StatelessWidget {
+  const _StartScreen();
+
+  @override
+  Widget build(BuildContext context) {
+    return FutureBuilder<bool>(
+      future: needsOnboarding(),
+      builder: (context, snap) {
+        if (!snap.hasData) {
+          // Пока SharedPreferences загружается — пустой экран цвета фона.
+          return const Scaffold(
+            body: SizedBox.shrink(),
+          );
+        }
+        if (snap.data == true) {
+          return const WelcomeScreen();
+        }
+        return const HomeScreen();
+      },
     );
   }
 }

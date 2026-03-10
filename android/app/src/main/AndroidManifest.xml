@@ -76,6 +76,16 @@
 
         <!-- WorkManager initializer (provided by the library; no action needed) -->
 
+        <!-- Re-registers WorkManager periodic sync after device reboot -->
+        <receiver
+            android:name=".BootReceiver"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+                <action android:name="android.intent.action.MY_PACKAGE_REPLACED"/>
+            </intent-filter>
+        </receiver>
+
     </application>
 
     <queries>

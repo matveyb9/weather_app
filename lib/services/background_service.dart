@@ -67,23 +67,29 @@ Future<void> _syncWeather() async {
   // Save to cache (works in isolate — pure SharedPreferences)
   await CacheService.saveWeather(rawJson: rawJson, location: location);
 
+  // Read unit settings once (reuse prefs already loaded above)
+  final tempUnit  = TempUnit.fromKey(prefs.getString('settings_temp_unit'));
+  final windUnit  = WindUnit.fromKey(prefs.getString('settings_wind_unit'));
+  final pressUnit = PressureUnit.fromKey(prefs.getString('settings_pressure_unit'));
+
   // Update home-screen widgets
   await HomeWidget.setAppGroupId('group.ru.matveyb9.test.weatherapp');
-  await _pushToWidgets(rawJson, location.name);
+  await _pushToWidgets(rawJson, location.name,
+      tempUnit: tempUnit, windUnit: windUnit, pressUnit: pressUnit);
 }
 
 /// Writes weather data into home_widget SharedPreferences.
-/// Reads unit settings from SharedPreferences (set by SettingsProvider).
-Future<void> _pushToWidgets(String rawJson, String cityName) async {
+/// Unit values are passed in from _syncWeather to avoid a second prefs load.
+Future<void> _pushToWidgets(
+  String rawJson,
+  String cityName, {
+  required TempUnit tempUnit,
+  required WindUnit windUnit,
+  required PressureUnit pressUnit,
+}) async {
   final data = WeatherData.fromJson(
       jsonDecode(rawJson) as Map<String, dynamic>);
   final c = data.current;
-
-  // Read unit preferences (written by SettingsProvider / WidgetService).
-  final prefs2      = await SharedPreferences.getInstance();
-  final tempUnit    = TempUnit.fromKey(prefs2.getString('settings_temp_unit'));
-  final windUnit    = WindUnit.fromKey(prefs2.getString('settings_wind_unit'));
-  final pressUnit   = PressureUnit.fromKey(prefs2.getString('settings_pressure_unit'));
 
   Future<void> save(String key, Object? val) =>
       HomeWidget.saveWidgetData(key, val);
@@ -156,14 +162,17 @@ class BackgroundService {
       await Workmanager().registerPeriodicTask(
         _taskUnique,
         _taskName,
-        frequency: const Duration(minutes: 30),
+        // 15 минут — минимальный интервал WorkManager, наиболее надёжный.
+        // 30 минут Android может откладывать на часы из-за Doze-режима.
+        frequency: const Duration(minutes: 15),
         existingWorkPolicy: ExistingWorkPolicy.keep,
         constraints: Constraints(
-          networkType:       NetworkType.connected,
-          requiresBatteryNotLow: true,
+          networkType: NetworkType.connected,
+          // requiresBatteryNotLow убран: он блокировал обновление при 20-30%
+          // и препятствовал работе ночью на зарядке в Doze-режиме.
         ),
         backoffPolicy:      BackoffPolicy.linear,
-        backoffPolicyDelay: const Duration(minutes: 10),
+        backoffPolicyDelay: const Duration(minutes: 5),
       );
       debugPrint('BackgroundService: periodic sync registered (30 min)');
     } catch (e) {
@@ -186,8 +195,4 @@ class BackgroundService {
     }
   }
 
-  static Future<void> cancelAll() async {
-    if (!_bgSupported) return;
-    await Workmanager().cancelAll();
-  }
 }

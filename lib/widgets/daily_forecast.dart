@@ -1,7 +1,6 @@
 // lib/widgets/daily_forecast.dart
 
 import 'package:flutter/material.dart';
-import 'package:flutter_animate/flutter_animate.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 
@@ -59,10 +58,7 @@ class DailyForecast extends StatelessWidget {
                 isToday: i == 0,
                 absMin:  absMin,
                 absMax:  absMax,
-              )
-                  .animate(delay: (i * 50).ms)
-                  .fadeIn(duration: 400.ms)
-                  .slideX(begin: 0.05, curve: Curves.easeOut);
+              );
             }),
           ],
         ),

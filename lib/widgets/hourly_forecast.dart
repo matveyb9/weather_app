@@ -1,7 +1,6 @@
 // lib/widgets/hourly_forecast.dart
 
 import 'package:flutter/material.dart';
-import 'package:flutter_animate/flutter_animate.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 
@@ -29,9 +28,7 @@ class HourlyForecast extends StatelessWidget {
           itemBuilder: (context, index) {
             final item  = hourly[index];
             final isNow = index == 0;
-            return _HourItem(item: item, isNow: isNow)
-                .animate(delay: (index * 30).ms)
-                .fadeIn(duration: 400.ms);
+            return _HourItem(item: item, isNow: isNow);
           },
         ),
       ),

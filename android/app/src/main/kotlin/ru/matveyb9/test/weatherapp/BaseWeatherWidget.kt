@@ -147,10 +147,18 @@ abstract class BaseWeatherWidget : AppWidgetProvider() {
 
     internal fun setRefreshIntent(context: Context, views: RemoteViews, widgetId: Int) {
         try {
-            val intent = Intent(ACTION_REFRESH).apply { `package` = context.packageName }
+            val intent = Intent(ACTION_REFRESH).apply {
+                `package` = context.packageName
+                // Уникальный requestCode per-widget гарантирует отдельный
+                // PendingIntent для каждого экземпляра виджета.
+            }
+            // FLAG_CANCEL_CURRENT + FLAG_IMMUTABLE:
+            // Удаляем старый интент и создаём новый — устраняет проблему
+            // «мёртвых» интентов на Android 12+ (API 31+), где
+            // FLAG_UPDATE_CURRENT|FLAG_IMMUTABLE конфликтуют.
             val pi = PendingIntent.getBroadcast(
                 context, widgetId, intent,
-                PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
+                PendingIntent.FLAG_CANCEL_CURRENT or PendingIntent.FLAG_IMMUTABLE
             )
             views.setOnClickPendingIntent(refreshViewId, pi)
             views.setFloat(refreshViewId, "setAlpha", 0.55f)

@@ -30,7 +30,7 @@ dependencies:
 
   # Background widget refresh — Android (WorkManager) + iOS (BGTaskScheduler)
   # Not available on Web / Windows / macOS / Linux
-  workmanager: ^0.6.0
+  workmanager: ^0.5.0
 
   # Device geolocation — Android, iOS, Web, Windows, macOS
   # Linux is NOT supported by the package
@@ -38,6 +38,7 @@ dependencies:
 
   # Network connectivity detection — all platforms
   connectivity_plus: ^6.0.0
+  url_launcher: ^6.3.0
 
 dev_dependencies:
   flutter_test:
