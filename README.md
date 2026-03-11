@@ -54,7 +54,7 @@
 | API погоды | [Open-Meteo](https://open-meteo.com) (бесплатно, без ключа) |
 | Геокодинг | [Open-Meteo Geocoding](https://geocoding-api.open-meteo.com) + [Nominatim](https://nominatim.org) |
 | Нативные виджеты | home_widget 0.7.0 |
-| Фоновые задачи | workmanager 0.5.x |
+| Фоновые задачи | workmanager 0.6.x |
 | Геолокация | geolocator 13.x |
 | Android workers | Kotlin + WorkManager |
 | iOS widgets | Swift + WidgetKit + AppIntent |
@@ -91,7 +91,7 @@ flutter build appbundle --release
 flutter build ipa --release
 
 # Web (PWA)
-flutter build web --release --web-renderer auto --base-href "/"
+flutter build web --release --base-href "/<путь-до-главной-страницы?>"
 
 # Windows
 flutter build windows --release
