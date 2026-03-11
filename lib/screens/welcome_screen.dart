@@ -30,9 +30,9 @@ Future<void> markTermsAccepted() async {
 // ── URLs ──────────────────────────────────────────────────────────────────────
 // Замените на реальные ссылки после публикации в репозитории.
 const _termsUrl =
-    'https://ВАШ_НИК.github.io/weather_app/docs/terms_of_use';
+    'https://matveyb9.github.io/weather_app/docs/terms_of_use';
 const _privacyUrl =
-    'https://ВАШ_НИК.github.io/weather_app/docs/privacy_policy';
+    'https://matveyb9.github.io/weather_app/docs/privacy_policy';
 
 // ── Screen ────────────────────────────────────────────────────────────────────
 

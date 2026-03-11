@@ -81,4 +81,4 @@
 ## 10. Контакты
 
 По вопросам, связанным с Условиями использования, обращайтесь через раздел Issues репозитория на GitHub:  
-[https://github.com/ВАШ_НИК/weather_app/issues](https://github.com/ВАШ_НИК/weather_app/issues)
+[https://github.com/matveyb9/weather_app/issues](https://github.com/matveyb9/weather_app/issues)

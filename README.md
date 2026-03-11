@@ -73,7 +73,7 @@
 ### Клонирование и запуск
 
 ```bash
-git clone https://github.com/ВАШ_НИК/weather_app.git
+git clone https://github.com/matveyb9/weather_app.git
 cd weather_app
 flutter pub get
 flutter run

@@ -106,4 +106,4 @@
 ## 10. Контакты
 
 По вопросам конфиденциальности обращайтесь через раздел Issues репозитория:  
-[https://github.com/ВАШ_НИК/weather_app/issues](https://github.com/ВАШ_НИК/weather_app/issues)
+[https://github.com/matveyb9/weather_app/issues](https://github.com/matveyb9/weather_app/issues)
