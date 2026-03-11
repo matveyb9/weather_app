@@ -30,7 +30,7 @@ dependencies:
 
   # Background widget refresh — Android (WorkManager) + iOS (BGTaskScheduler)
   # Not available on Web / Windows / macOS / Linux
-  workmanager: ^0.5.0
+  workmanager: ^0.6.0
 
   # Device geolocation — Android, iOS, Web, Windows, macOS
   # Linux is NOT supported by the package
